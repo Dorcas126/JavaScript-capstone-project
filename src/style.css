@@ -3,7 +3,6 @@
   box-sizing: border-box;
 }
 
-
 header {
   height: 1.5cm;
   width: 100%;
@@ -47,3 +46,58 @@ footer {
   text-align: center;
 }
 
+.main-content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 15px;
+  padding: 10px;
+}
+
+.movie-card {
+  height: 7cm;
+  width: 6cm;
+  background-color: rgb(202, 202, 202);
+  padding: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: center;
+}
+
+.movie-card img {
+  height: 5cm;
+  width: 100%;
+  border-radius: 10px;
+  object-fit: fill;
+}
+
+.title {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.title p {
+  grid-column: span 4;
+}
+
+.like-btn {
+  color: blue;
+  cursor: pointer;
+}
+
+.comment-btn {
+  display: flex;
+  flex-direction: row;
+  gap: 7px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.comment-btn span {
+  display: flex;
+  flex-direction: row;
+  gap: 2px;
+  align-items: center;
+}
