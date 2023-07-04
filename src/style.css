@@ -3,6 +3,7 @@
   box-sizing: border-box;
 }
 
+
 header {
   height: 1.5cm;
   width: 100%;
@@ -35,5 +36,14 @@ nav ul {
 nav ul li a {
   color: white;
   text-decoration: none;
+}
+
+footer {
+  width: 100%;
+  background-color: rgb(104, 102, 102);
+  bottom: 0;
+  padding: 10px;
+  position: absolute;
+  text-align: center;
 }
 
