@@ -1,12 +1,13 @@
 {
   "name": "javascript-capstone-project",
   "version": "1.0.0",
-  "description": "<a name=\"readme-top\"></a>",
+  "description": "Capstone project",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack serve --open",
-    "build": "webpack"
+    "start": "webpack-dev-server --config webpack.dev.js --open",
+    "build": "webpack --config webpack.prod.js",
+    "lint": "npx eslint . --fix",
+    "stylelint": "npx stylelint '**/*.{css,scss}' --fix"
   },
   "keywords": [],
   "author": "Uwimbabazi Dorcas",
@@ -18,7 +19,7 @@
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.27.5",
     "hint": "^7.1.10",
-    "html-webpack-plugin": "^5.5.3",
+    
     "style-loader": "^3.3.3",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^21.0.0",
@@ -29,6 +30,11 @@
     "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
-    "lodash": "^4.17.21"
+    "clean-webpack-plugin": "^4.0.0",
+    "file-loader": "^6.2.0",
+    "html-loader": "^4.2.0",
+    "lodash": "^4.17.21",
+    "html-webpack-plugin": "^5.5.3",
+    "webpack-merge": "^5.9.0"
   }
 }
