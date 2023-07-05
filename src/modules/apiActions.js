@@ -11,5 +11,4 @@ const refresh = async () => {
   displayMovies(movies);
 };
 
-
 export default refresh;

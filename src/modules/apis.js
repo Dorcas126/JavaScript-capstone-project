@@ -1,7 +1,7 @@
 import { MOVIE_API_URL } from './variables.js';
 
 /* eslint no-underscore-dangle: ["error", {"allow": ["_embedded"]}] */
- const transformMovieData = (data) => {
+const transformMovieData = (data) => {
   const transformedData = {
     id: data.id,
     name: data.name,
@@ -31,4 +31,3 @@ export const getcomments = async (id) => {
   const json = await res.json();
   return json;
 };
-
