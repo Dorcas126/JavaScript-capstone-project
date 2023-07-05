@@ -1,5 +1,8 @@
 import { movieContainer } from './variables.js';
-import { createElement } from './DomUtilities.js';
+import { createElement, selectElsFromDom } from './DomUtilities.js';
+
+import DomEvent from './DomEvents.js';
+import printModalBox from './modalBox.js';
 
 const displayMovies = (movies) => {
   movieContainer.innerHTML = null;
@@ -30,6 +33,12 @@ const displayMovies = (movies) => {
 
     movieCard.innerHTML = movieCardContent;
     movieContainer.appendChild(movieCard);
+  });
+  const openModalBtns = selectElsFromDom('.comment-btn');
+  openModalBtns.forEach((btn, index) => {
+    DomEvent(btn, 'click', () => {
+      printModalBox(movies[index]);
+    });
   });
 };
 

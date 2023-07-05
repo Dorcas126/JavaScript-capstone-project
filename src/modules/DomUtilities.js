@@ -7,7 +7,7 @@ export const selectElFromDom = (element) => {
 
 // Select multiple elements from DOM
 export const selectElsFromDom = (elements) => {
-  const els = document.querySelector(elements);
+  const els = document.querySelectorAll(elements);
 
   return els;
 };
