@@ -42,7 +42,6 @@ footer {
   background-color: rgb(104, 102, 102);
   bottom: 0;
   padding: 10px;
-  position: absolute;
   text-align: center;
 }
 
@@ -50,8 +49,10 @@ footer {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 15px;
+  gap: 25px;
   padding: 10px;
+  justify-content:center;
+  padding-bottom: 3rem;
 }
 
 .movie-card {
