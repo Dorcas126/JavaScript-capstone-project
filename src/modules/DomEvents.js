@@ -1,5 +1,5 @@
 const DomEvent = (element, eventType, action) => {
-element.addEventListener(eventType, action )
-}
+  element.addEventListener(eventType, action);
+};
 
-export default DomEvent
+export default DomEvent;
