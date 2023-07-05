@@ -48,7 +48,7 @@ const printModalBox = (movie) => {
   main.appendChild(modalContainer);
 
   //Update comment
-  refreshComments();
+  refreshComments(movie.id);
 
   const closeBtn = selectElFromDom(".modal-close-btn");
   DomEvent(closeBtn, "click", () => {
@@ -57,22 +57,29 @@ const printModalBox = (movie) => {
   });
 };
 
-const refreshComments = async () => {
-  const comments = await getcomments();
-  let commentsWrapper = selectElFromDom(".commentsBox");
-  commentsWrapper.innerHTML = null;
-  let p = createElement("p");
-  p.innerHTML = `Comments (${comments.length})`;
-  commentsWrapper.appendChild(p);
-  comments.forEach((comment) => {
+const refreshComments = async (id) => {
+    let commentsWrapper = selectElFromDom(".commentsBox");
+  commentsWrapper.innerHTML = `<p>LOADING COMMENTS...</p>`;
+  const comments = await getcomments(id);
+  if (comments.error) {
+    commentsWrapper.innerHTML = `<p>No comments under this movie</p>`;
+  } else {
+
+    commentsWrapper.innerHTML = null;
     let p = createElement("p");
-    p.innerHTML = `
-      <span>${comment.creation_date}</span>
-         <span>${comment.username}: </span>
-         <span>${comment.comment}</span>
-      `;
+    console.log(comments);
+    p.innerHTML = `Comments (${comments.length})`;
     commentsWrapper.appendChild(p);
-  });
+    comments.forEach((comment) => {
+      let p = createElement("p");
+      p.innerHTML = `
+          <span>${comment.creation_date}</span>
+             <span>${comment.username}: </span>
+             <span>${comment.comment}</span>
+          `;
+      commentsWrapper.appendChild(p);
+    });
+  }
 };
 
 export default printModalBox;

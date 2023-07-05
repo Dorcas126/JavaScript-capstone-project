@@ -27,7 +27,7 @@ export const getMovieApi = async () => {
 
 // Get comments for a specific movie
 export const getcomments = async (id) => {
-  const res = await fetch('https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/JBO9bTrIwTWIlKbDRBlW/comments?item_id=1863458');
+  const res = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/JBO9bTrIwTWIlKbDRBlW/comments?item_id=${id}`);
   const json = await res.json();
   return json;
 };
