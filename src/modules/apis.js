@@ -1,7 +1,7 @@
 import { MOVIE_API_URL } from './variables.js';
 
 /* eslint no-underscore-dangle: ["error", {"allow": ["_embedded"]}] */
-export const transformMovieData = (data) => {
+const transformMovieData = (data) => {
   const transformedData = {
     id: data.id,
     name: data.name,
@@ -25,4 +25,9 @@ export const getMovieApi = async () => {
   return data;
 };
 
-// Transform APi
+// Get comments for a specific movie
+export const getcomments = async (id) => {
+  const res = await fetch(`https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/JBO9bTrIwTWIlKbDRBlW/comments?item_id=${id}`);
+  const json = await res.json();
+  return json;
+};

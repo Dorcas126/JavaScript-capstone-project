@@ -1,6 +1,30 @@
 import DomEvent from './DomEvents.js';
 import { createElement, selectElFromDom } from './DomUtilities.js';
+import { getcomments } from './apis.js';
 import { main } from './variables.js';
+
+const refreshComments = async (id) => {
+  const commentsWrapper = selectElFromDom('.commentsBox');
+  commentsWrapper.innerHTML = '<p>LOADING COMMENTS...</p>';
+  const comments = await getcomments(id);
+  if (comments.error) {
+    commentsWrapper.innerHTML = '<p>No comments under this movie</p>';
+  } else {
+    commentsWrapper.innerHTML = null;
+    const p = createElement('p');
+    p.innerHTML = `Comments (${comments.length})`;
+    commentsWrapper.appendChild(p);
+    comments.forEach((comment) => {
+      const p = createElement('p');
+      p.innerHTML = `
+            <span>${comment.creation_date}</span>
+               <span>${comment.username}: </span>
+               <span>${comment.comment}</span>
+            `;
+      commentsWrapper.appendChild(p);
+    });
+  }
+};
 
 const printModalBox = (movie) => {
   // create modal box background
@@ -27,16 +51,27 @@ const printModalBox = (movie) => {
         <p>Official Site: <a href='${
   movie.officialSite
 } target='_blank'>Viste site</a> </p>
-        ${movie?.rating?.average ? `<p>Rating: ${movie.rating.average}</p>` : '<p></p>'}
+        ${
+  movie?.rating?.average
+    ? `<p>Rating: ${movie.rating.average}</p>`
+    : '<p></p>'
+}
       </div>
-      <p class="comments-head">Comments</p>
       <hr>
+      <div class="commentsBox">
+
+      </div>
+      
+     
  `;
 
   // update modal box background
   modalContainer.appendChild(modalBoxContent);
   document.body.style.overflowY = 'hidden';
   main.appendChild(modalContainer);
+
+  // Update comment
+  refreshComments(movie.id);
 
   const closeBtn = selectElFromDom('.modal-close-btn');
   DomEvent(closeBtn, 'click', () => {
