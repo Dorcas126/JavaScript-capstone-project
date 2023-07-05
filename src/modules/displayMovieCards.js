@@ -1,14 +1,14 @@
-import { movieContainer, main } from "./variables.js";
-import { createElement } from "./DomUtilities.js";
-import { selectElsFromDom } from "./DomUtilities.js";
-import DomEvent from "./DomEvents.js";
-import printModalBox from "./modalBox.js";
+import { movieContainer } from './variables.js';
+import { createElement, selectElsFromDom } from './DomUtilities.js';
+
+import DomEvent from './DomEvents.js';
+import printModalBox from './modalBox.js';
 
 const displayMovies = (movies) => {
   movieContainer.innerHTML = null;
   movies.forEach((movie) => {
-    const movieCard = createElement("div");
-    movieCard.classList.add("movie-card");
+    const movieCard = createElement('div');
+    movieCard.classList.add('movie-card');
     const movieCardContent = `
             <img
               src="${movie.image?.medium}"
@@ -34,10 +34,10 @@ const displayMovies = (movies) => {
     movieCard.innerHTML = movieCardContent;
     movieContainer.appendChild(movieCard);
   });
-  let openModalBtns = selectElsFromDom(".comment-btn");
+  const openModalBtns = selectElsFromDom('.comment-btn');
   openModalBtns.forEach((btn, index) => {
-    DomEvent(btn, "click", ()=>{
-      printModalBox(movies[index])
+    DomEvent(btn, 'click', () => {
+      printModalBox(movies[index]);
     });
   });
 };
