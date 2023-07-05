@@ -246,8 +246,8 @@ form h3 {
     width: 55rem;
   }
 
-  #userName, #comment {
+  #userName,
+  #comment {
     width: 30rem;
   }
 }
-

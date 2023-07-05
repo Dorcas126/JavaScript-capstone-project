@@ -1,4 +1,4 @@
-import { selectElFromDom } from "./DomUtilities";
+import { selectElFromDom } from './DomUtilities.js';
 
 export const switchClass = (element, classname, message) => {
   element.classList.add(classname);
@@ -10,16 +10,16 @@ export const switchClass = (element, classname, message) => {
 };
 
 export const setFormInfo = (msgType, message) => {
-  const fromMessage = selectElFromDom(".form-message");
+  const fromMessage = selectElFromDom('.form-message');
   switch (msgType) {
-    case "success":
-      switchClass(fromMessage, "success", message);
+    case 'success':
+      switchClass(fromMessage, 'success', message);
       break;
-    case "error":
-      switchClass(fromMessage, "error", message);
+    case 'error':
+      switchClass(fromMessage, 'error', message);
       break;
-    case "warn":
-      switchClass(fromMessage, "warn", message);
+    case 'warn':
+      switchClass(fromMessage, 'warn', message);
       break;
     default:
       break;
