@@ -1,5 +1,6 @@
 import { createElement, selectElFromDom } from "./DomUtilities";
 import { getcomments, addComment } from "./apis";
+import { setFormInfo } from "./utilities";
 
 export const displayComments = async (id) => {
   const commentsWrapper = selectElFromDom(".commentsBox");
@@ -28,9 +29,9 @@ export const displayComments = async (id) => {
 export const addNewComment = async (id) => {
   let userName = selectElFromDom("#userName");
   let comment = selectElFromDom("#comment");
-  const fromMessage = selectElFromDom(".form-message");
   if (userName.value.trim() === "" || comment.value.trim() === "") {
-    fromMessage.innerHTML = "Please all filed is required";
+    setFormInfo;
+    setFormInfo("error", "Please all filed is required");
     return null;
   }
   const res = await addComment({
@@ -39,9 +40,9 @@ export const addNewComment = async (id) => {
     comment: comment.value,
   });
   if (!res.isSuccess) {
-    fromMessage.innerHTML = "Opps error occured! Try gain later";
+    setFormInfo("error", "Opps error occured! Try gain later");
   } else {
-    fromMessage.innerHTML = "You have submitted your comment";
+    setFormInfo("success", "You have submitted your comment");
     comment.value = null;
     userName.value = null;
     displayComments(id);
