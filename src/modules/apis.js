@@ -1,4 +1,4 @@
-import { MOVIE_API_URL, LIKE_API_URL, movieContainer } from './variables.js';
+import { MOVIE_API_URL, BASE_URL, movieContainer } from './variables.js';
 
 /* eslint no-underscore-dangle: ["error", {"allow": ["_embedded"]}] */
 const transformMovieData = (data) => {
@@ -6,12 +6,12 @@ const transformMovieData = (data) => {
     id: data.id,
     name: data.name,
     summary: data.summary,
-    type: data._embedded.show.type,
-    language: data._embedded.show.language,
-    rating: data._embedded.show.rating,
-    officialSite: data._embedded.show.officialSite,
-    image: data._embedded.show.image,
-    description: data._embedded.show.summary,
+    type: data.type,
+    language: data.language,
+    rating: data.rating,
+    officialSite: data.officialSite,
+    image: data.image,
+    description: data.summary,
   };
 
   return transformedData;
@@ -19,7 +19,7 @@ const transformMovieData = (data) => {
 
 // get movies and likes
 export const getMovieApi = async () => {
-  const URLS = [fetch(MOVIE_API_URL), fetch(LIKE_API_URL)];
+  const URLS = [fetch(MOVIE_API_URL), fetch(`${BASE_URL}/likes`)];
   const movies = await Promise.all(URLS)
     .then((res) => {
       const response = res.map((data) => data.json());
@@ -42,7 +42,7 @@ export const getMovieApi = async () => {
 export const getcomments = async (id) => {
   try {
     const res = await fetch(
-      `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/JBO9bTrIwTWIlKbDRBlW/comments?item_id=${id}`,
+      `${BASE_URL}/comments?item_id=${id}`,
     );
     const json = await res.json();
     return json;
@@ -55,7 +55,7 @@ export const getcomments = async (id) => {
 export const addComment = async (data) => {
   try {
     const res = await fetch(
-      'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/JBO9bTrIwTWIlKbDRBlW/comments',
+      `${BASE_URL}/comments`,
       {
         method: 'POST',
         body: JSON.stringify(data),
@@ -78,7 +78,7 @@ export const addComment = async (data) => {
 export const addLike = async (id) => {
   try {
     const res = await fetch(
-      LIKE_API_URL,
+      `${BASE_URL}/likes`,
       {
         method: 'POST',
         body: JSON.stringify({ item_id: id }),

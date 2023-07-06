@@ -29,7 +29,6 @@ const displayMovies = async (movies) => {
                 <p>Comments</p>
                 <i class="fa-solid fa-angle-down"></i>
               </span>
-              <span>320</span>
             </button>
    `;
 

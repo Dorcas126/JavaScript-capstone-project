@@ -44,7 +44,7 @@ const printModalBox = (movie) => {
       <p class="form-message"></p>
       <input type="text" name="userName" id="userName" placeholder="User name">
       <textarea name="comment" id="comment" cols="30" rows="10" placeholder="Your insight"></textarea>
-      <button type="submit" id="submit-comment">Submit</button>
+      <input type="submit" id="submit-comment" value='submit' >
     </form>
      
  `;
@@ -55,7 +55,7 @@ const printModalBox = (movie) => {
   main.appendChild(modalContainer);
 
   // Update comment
-  displayComments(movie.id);
+  displayComments(movie.id, true);
 
   // get form data
 
