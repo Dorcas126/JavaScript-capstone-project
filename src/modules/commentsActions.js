@@ -32,8 +32,10 @@ export const addNewComment = async (id) => {
   const userName = selectElFromDom('#userName');
   const comment = selectElFromDom('#comment');
   const submitBtn = selectElFromDom('#submit-comment');
+  submitBtn.value = 'Submitting...';
   if (userName.value.trim() === '' || comment.value.trim() === '') {
     setFormInfo('error', 'Please all filed is required');
+    submitBtn.value = 'Submit';
     return null;
   }
   const res = await addComment({
@@ -41,17 +43,16 @@ export const addNewComment = async (id) => {
     username: userName.value,
     comment: comment.value,
   });
-  submitBtn.value = 'Submitting...';
+
   if (res.isSuccess) {
     setFormInfo('success', 'You have submitted your comment');
     comment.value = null;
     userName.value = null;
-    submitBtn.value = 'Submit';
     displayComments(id);
   } else {
     setFormInfo('error', 'Opps error occured! Try gain later');
-    submitBtn.value = 'Submit';
   }
+  submitBtn.value = 'Submit';
 
   return 0;
 };
