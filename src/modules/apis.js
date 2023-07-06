@@ -74,3 +74,26 @@ export const addComment = async (data) => {
     return { isSuccess: false };
   }
 };
+
+export const addLike = async (id) => {
+  try {
+    const res = await fetch(
+      LIKE_API_URL,
+      {
+        method: 'POST',
+        body: JSON.stringify({ item_id: id }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      },
+    );
+
+    if (res) {
+      return { isSuccess: true };
+    }
+
+    return 0;
+  } catch (error) {
+    return { isSuccess: false };
+  }
+};
