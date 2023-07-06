@@ -1,4 +1,4 @@
-import { MOVIE_API_URL, movieContainer } from "./variables.js";
+import { MOVIE_API_URL, movieContainer } from './variables.js';
 
 /* eslint no-underscore-dangle: ["error", {"allow": ["_embedded"]}] */
 const transformMovieData = (data) => {
@@ -25,8 +25,7 @@ export const getMovieApi = async () => {
     const data = json.map((json) => transformMovieData(json));
     return data;
   } catch (error) {
-    movieContainer.innerHTML =
-      "<p style='color: red;'>Opps Error Occured! Failed to fetch";
+    movieContainer.innerHTML = "<p style='color: red;'>Opps Error Occured! Failed to fetch";
   }
 
   return null;
@@ -36,13 +35,12 @@ export const getMovieApi = async () => {
 export const getcomments = async (id) => {
   try {
     const res = await fetch(
-      `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/JBO9bTrIwTWIlKbDRBlW/comments?item_id=${id}`
+      `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/JBO9bTrIwTWIlKbDRBlW/comments?item_id=${id}`,
     );
     const json = await res.json();
     return json;
   } catch (error) {
-    movieContainer.innHTML =
-      "<p style='color: red;'>Opps Error Occured! Failed to fetch";
+    movieContainer.innHTML = "<p style='color: red;'>Opps Error Occured! Failed to fetch";
   }
   return null;
 };
@@ -50,19 +48,21 @@ export const getcomments = async (id) => {
 export const addComment = async (data) => {
   try {
     const res = await fetch(
-      "https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/JBO9bTrIwTWIlKbDRBlW/comments",
+      'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/JBO9bTrIwTWIlKbDRBlW/comments',
       {
-        method: "POST",
+        method: 'POST',
         body: JSON.stringify(data),
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
-      }
+      },
     );
 
     if (res) {
       return { isSuccess: true };
     }
+
+    return 0;
   } catch (error) {
     return { isSuccess: false };
   }
