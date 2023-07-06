@@ -173,6 +173,10 @@ footer {
   text-align: center;
 }
 
+.h3-comment {
+  text-align: center;
+}
+
 form {
   width: 100%;
   display: flex;

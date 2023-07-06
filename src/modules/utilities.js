@@ -25,3 +25,5 @@ export const setFormInfo = (msgType, message) => {
       break;
   }
 };
+
+export const getLength = (array) => array.length;
