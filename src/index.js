@@ -1,7 +1,12 @@
  import './style.css';
-  import DomEvent from './modules/DomEvents.js';
-  import refresh from './modules/apiActions.js';
+ let x  = document.querySelectorAll('i')
+ x.forEach(x=>{
+  x.setAttribute('class','fa-regular fa-heart info-icon')
+ })
 
-  DomEvent(document, 'DOMContentLoaded', () => {
-    refresh();
-  });
+  // import DomEvent from './modules/DomEvents.js';
+  // import refresh from './modules/apiActions.js';
+
+  // DomEvent(document, 'DOMContentLoaded', () => {
+  //   refresh();
+  // });
