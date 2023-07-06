@@ -4,7 +4,6 @@ import { createElement, selectElsFromDom } from './DomUtilities.js';
 import DomEvent from './DomEvents.js';
 import printModalBox from './modalBox.js';
 
-
 const displayMovies = async (movies) => {
   movieContainer.innerHTML = null;
   movies.forEach((movie) => {
@@ -34,7 +33,6 @@ const displayMovies = async (movies) => {
 
     movieCard.innerHTML = movieCardContent;
     movieContainer.appendChild(movieCard);
-
   });
 
   const openModalBtns = selectElsFromDom('.comment-btn');
