@@ -1,5 +1,6 @@
 import { createElement, selectElFromDom } from './DomUtilities.js';
 import { getcomments, addComment } from './apis.js';
+import commentCounter from './commentCounter.js';
 import { setFormInfo } from './utilities.js';
 
 export const displayComments = async (id) => {
@@ -9,9 +10,6 @@ export const displayComments = async (id) => {
   const comments = await getcomments(id);
   if (!comments.error) {
     commentsWrapper.innerHTML = null;
-    const p = createElement('p');
-    p.innerHTML = `Comments (${comments.length})`;
-    commentsWrapper.appendChild(p);
     comments.forEach((comment) => {
       const p = createElement('p');
       p.innerHTML = `
@@ -24,6 +22,8 @@ export const displayComments = async (id) => {
   } else {
     commentsWrapper.innerHTML = '<p>No comments under this movie</p>';
   }
+
+  commentCounter(comments);
 };
 
 export const addNewComment = async (id) => {

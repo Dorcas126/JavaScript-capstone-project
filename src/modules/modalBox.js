@@ -34,6 +34,7 @@ const printModalBox = (movie) => {
     : '<p></p>'
 }
       </div>
+      <h3 class='h3-comment'>Comments <span class='comment-count'></span></h3>
       <hr>
       <div class="commentsBox">
       </div>
