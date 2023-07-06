@@ -7,10 +7,7 @@ export const displayComments = async (id) => {
   commentsWrapper.innerHTML = '<p>LOADING COMMENTS...</p>';
 
   const comments = await getcomments(id);
-  if (comments.error) {
-    commentsWrapper.innerHTML = '<p>No comments under this movie</p>';
-  } else {
-    commentsWrapper.innerHTML = null;
+  if (!comments.error) { commentsWrapper.innerHTML = null;
     const p = createElement('p');
     p.innerHTML = `Comments (${comments.length})`;
     commentsWrapper.appendChild(p);
@@ -23,6 +20,9 @@ export const displayComments = async (id) => {
               `;
       commentsWrapper.appendChild(p);
     });
+  } else {
+    commentsWrapper.innerHTML = '<p>No comments under this movie</p>';
+
   }
 };
 
@@ -38,14 +38,14 @@ export const addNewComment = async (id) => {
     username: userName.value,
     comment: comment.value,
   });
-  if (!res.isSuccess) {
-    setFormInfo('error', 'Opps error occured! Try gain later');
-  } else {
+  console.log(res)
+  if (res.isSuccess) {
     setFormInfo('success', 'You have submitted your comment');
     comment.value = null;
     userName.value = null;
     displayComments(id);
+  } else {
+    setFormInfo('error', 'Opps error occured! Try gain later');
   }
 
-  return null;
 };
