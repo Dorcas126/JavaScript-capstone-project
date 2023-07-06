@@ -1,4 +1,4 @@
-import { MOVIE_API_URL, movieContainer } from './variables.js';
+import { MOVIE_API_URL, LIKE_API_URL, movieContainer } from './variables.js';
 
 /* eslint no-underscore-dangle: ["error", {"allow": ["_embedded"]}] */
 const transformMovieData = (data) => {
@@ -19,16 +19,23 @@ const transformMovieData = (data) => {
 
 // get movies and likes
 export const getMovieApi = async () => {
-  try {
-    const res = await fetch(MOVIE_API_URL);
-    const json = await res.json();
-    const data = json.map((json) => transformMovieData(json));
-    return data;
-  } catch (error) {
-    movieContainer.innerHTML = "<p style='color: red;'>Opps Error Occured! Failed to fetch";
-  }
+  const URLS = [fetch(MOVIE_API_URL), fetch(LIKE_API_URL)];
+  const movies = await Promise.all(URLS)
+    .then((res) => {
+      const response = res.map((data) => data.json());
+      return Promise.all(response);
+    }).then((data) => {
+      const movie = data[0].map((movie) => {
+        const transformDATA = transformMovieData(movie);
+        const likeFound = data[1].find((like) => like.item_id === movie.id);
+        const likes = likeFound ? likeFound.likes : 0;
+        return { ...transformDATA, likes };
+      });
 
-  return null;
+      return movie;
+    });
+
+  return movies;
 };
 
 // Get comments for a specific movie

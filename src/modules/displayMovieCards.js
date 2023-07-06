@@ -4,7 +4,7 @@ import { createElement, selectElsFromDom } from './DomUtilities.js';
 import DomEvent from './DomEvents.js';
 import printModalBox from './modalBox.js';
 
-const displayMovies = (movies) => {
+const displayMovies = async (movies) => {
   movieContainer.innerHTML = null;
   movies.forEach((movie) => {
     const movieCard = createElement('div');
@@ -19,7 +19,7 @@ const displayMovies = (movies) => {
               <p>${movie.name}</p>
               <div>
                 <span><i class="like-btn fa-solid fa-thumbs-up"></i></span>
-                <span>10</span>
+                <p id='like'>${movie.likes}</p>
               </div>
             </div>
             <button class="comment-btn">
@@ -34,6 +34,7 @@ const displayMovies = (movies) => {
     movieCard.innerHTML = movieCardContent;
     movieContainer.appendChild(movieCard);
   });
+
   const openModalBtns = selectElsFromDom('.comment-btn');
   openModalBtns.forEach((btn, index) => {
     DomEvent(btn, 'click', () => {
