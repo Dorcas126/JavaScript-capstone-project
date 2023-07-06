@@ -8,12 +8,12 @@ import likeCount from './likeCounter.js';
 const displayMovies = async (movies) => {
   movieContainer.innerHTML = null;
   movies.forEach((movie) => {
-    const movieCard = createElement('div');
+    const movieCard = createElement('li');
     movieCard.classList.add('movie-card');
     const movieCardContent = `
     <img src="${movie.image?.medium}" alt="${movie.name}" class='movie-img' />
     <div class="card-content">
-      <p class="title">Kirby Buckets</p>
+      <h3 class="title">Kirby Buckets</h3>
 
       <div class="comments">
         <button class="comment-btn">
