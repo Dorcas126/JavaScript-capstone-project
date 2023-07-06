@@ -1,4 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+  @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&family=Pacifico&display=swap');
+
 
 * {
   margin: 0;
@@ -26,6 +28,34 @@ header {
   z-index: 4;
   border-bottom: 2px solid var(--secondary-dark);
   border-radius: 3px;
+}
+
+.logo-movie {
+  margin-left: 20px;
+  height: 100%;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  color: var(--primary-red);
+  font-size: 20px;
+}
+
+.logo-movie span {
+  font-family: 'Pacifico', cursive;
+
+}
+
+.logo-movie a {
+ display: flex;
+ font-size: 36px;
+ font-weight: 900;
+ align-items: center;
+ height: 100%;
+ color: white;
+}
+
+.logo-movie a span{
+  color: var(--primary-red);
 }
 
 nav {
