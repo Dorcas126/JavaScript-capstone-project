@@ -3,6 +3,7 @@ import { createElement, selectElsFromDom } from './DomUtilities.js';
 
 import DomEvent from './DomEvents.js';
 import printModalBox from './modalBox.js';
+import likeCount from './likeCounter.js';
 
 const displayMovies = async (movies) => {
   movieContainer.innerHTML = null;
@@ -18,8 +19,9 @@ const displayMovies = async (movies) => {
             <div class="title">
               <p>${movie.name}</p>
               <div>
-                <span><i class="like-btn fa-solid fa-thumbs-up"></i></span>
-                <p id='like'>${movie.likes}</p>
+                <span id='${movie.id}' class='like-btn'><i class="fa-regular fa-heart" id='love${movie.id}'></i></span>
+             
+                <p class='like-counter${movie.id}'>${movie.likes}</p>
               </div>
             </div>
             <button class="comment-btn">
@@ -27,7 +29,6 @@ const displayMovies = async (movies) => {
                 <p>Comments</p>
                 <i class="fa-solid fa-angle-down"></i>
               </span>
-              <span>320</span>
             </button>
    `;
 
@@ -36,9 +37,15 @@ const displayMovies = async (movies) => {
   });
 
   const openModalBtns = selectElsFromDom('.comment-btn');
+  const likeBtns = selectElsFromDom('.like-btn');
   openModalBtns.forEach((btn, index) => {
     DomEvent(btn, 'click', () => {
       printModalBox(movies[index]);
+    });
+  });
+  likeBtns.forEach((likeBtn) => {
+    DomEvent(likeBtn, 'click', () => {
+      likeCount(likeBtn.id);
     });
   });
 };
