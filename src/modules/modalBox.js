@@ -1,30 +1,7 @@
 import DomEvent from './DomEvents.js';
 import { createElement, selectElFromDom } from './DomUtilities.js';
-import { getcomments } from './apis.js';
+import { displayComments, addNewComment } from './commentsActions.js';
 import { main } from './variables.js';
-
-const refreshComments = async (id) => {
-  const commentsWrapper = selectElFromDom('.commentsBox');
-  commentsWrapper.innerHTML = '<p>LOADING COMMENTS...</p>';
-  const comments = await getcomments(id);
-  if (comments.error) {
-    commentsWrapper.innerHTML = '<p>No comments under this movie</p>';
-  } else {
-    commentsWrapper.innerHTML = null;
-    const p = createElement('p');
-    p.innerHTML = `Comments (${comments.length})`;
-    commentsWrapper.appendChild(p);
-    comments.forEach((comment) => {
-      const p = createElement('p');
-      p.innerHTML = `
-            <span>${comment.creation_date}</span>
-               <span>${comment.username}: </span>
-               <span>${comment.comment}</span>
-            `;
-      commentsWrapper.appendChild(p);
-    });
-  }
-};
 
 const printModalBox = (movie) => {
   // create modal box background
@@ -59,9 +36,15 @@ const printModalBox = (movie) => {
       </div>
       <hr>
       <div class="commentsBox">
-
       </div>
       
+      <form action="#">
+      <h3>Add new comment</h3>
+      <p class="form-message"></p>
+      <input type="text" name="userName" id="userName" placeholder="User name">
+      <textarea name="comment" id="comment" cols="30" rows="10" placeholder="Your insight"></textarea>
+      <button type="submit" id="submit-comment">Submit</button>
+    </form>
      
  `;
 
@@ -71,7 +54,16 @@ const printModalBox = (movie) => {
   main.appendChild(modalContainer);
 
   // Update comment
-  refreshComments(movie.id);
+  displayComments(movie.id);
+
+  // get form data
+
+  const submitBtn = selectElFromDom('#submit-comment');
+
+  DomEvent(submitBtn, 'click', (e) => {
+    e.preventDefault();
+    addNewComment(movie.id);
+  });
 
   const closeBtn = selectElFromDom('.modal-close-btn');
   DomEvent(closeBtn, 'click', () => {
