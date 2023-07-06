@@ -11,25 +11,22 @@ const displayMovies = async (movies) => {
     const movieCard = createElement('div');
     movieCard.classList.add('movie-card');
     const movieCardContent = `
-            <img
-              src="${movie.image?.medium}"
-              alt="${movie.name}"
-              class='movie-img'
-            />
-            <div class="title">
-              <p>${movie.name}</p>
-              <div>
-                <span id='${movie.id}' class='like-btn'><i class="fa-regular fa-heart" id='love${movie.id}'></i></span>
-             
-                <p class='like-counter${movie.id}'>${movie.likes}</p>
-              </div>
-            </div>
-            <button class="comment-btn">
-              <span>
-                <p>Comments</p>
-                <i class="fa-solid fa-angle-down"></i>
-              </span>
-            </button>
+    <img src="${movie.image?.medium}" alt="${movie.name}" class='movie-img' />
+    <div class="card-content">
+      <p class="title">Kirby Buckets</p>
+
+      <div class="comments">
+        <button class="comment-btn">
+          Comments
+        </button>
+        <div class="likes">
+          <span id='${movie.id}' class='like-btn'><i class="fa-regular fa-heart" id='love${movie.id}'></i></span>
+          <p class='like-count like-counter${movie.id}'>${movie.likes}</p>
+        </div>
+      </div>
+
+    </div>
+
    `;
 
     movieCard.innerHTML = movieCardContent;
@@ -44,8 +41,8 @@ const displayMovies = async (movies) => {
     });
   });
   likeBtns.forEach((likeBtn) => {
-    DomEvent(likeBtn, 'click', () => {
-      likeCount(likeBtn.id);
+    DomEvent(likeBtn, 'click', (e) => {
+      likeCount(e,likeBtn.id);
     });
   });
 };

@@ -1,7 +1,7 @@
-import './style.css';
- import DomEvent from './modules/DomEvents.js';
- import refresh from './modules/apiActions.js';
+ import './style.css';
+  import DomEvent from './modules/DomEvents.js';
+  import refresh from './modules/apiActions.js';
 
- DomEvent(document, 'DOMContentLoaded', () => {
-   refresh();
- });
+  DomEvent(document, 'DOMContentLoaded', () => {
+    refresh();
+  });
