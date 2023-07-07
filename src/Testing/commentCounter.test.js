@@ -1,4 +1,4 @@
-import commentCounter from "../module/commentCounter";
+import commentCounter from '../module/commentCounter.js';
 import { selectElFromDom } from '../module/DomUtilities.js';
 import { getLength } from '../module/utilities.js';
 
@@ -17,7 +17,7 @@ describe('commentCounter', () => {
     selectElFromDom.mockReturnValue(mockCommentCounterElement);
     getLength.mockReturnValue(3);
 
-    const comments = [1, 2, 3]; 
+    const comments = [1, 2, 3];
 
     await commentCounter(comments);
 
@@ -76,5 +76,4 @@ describe('commentCounter', () => {
     expect(getLength).toHaveBeenCalledWith(null);
     expect(mockCommentCounterElement.innerHTML).toBe('(0)');
   });
-
 });

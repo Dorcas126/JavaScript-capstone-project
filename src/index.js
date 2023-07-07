@@ -1,8 +1,8 @@
 import './style.css';
-import useNavigation from './modules/useNavigation.js';
-import DomEvent from './modules/DomEvents.js';
-import refresh from './modules/apiActions.js';
-import { selectElsFromDom } from './modules/DomUtilities.js';
+import useNavigation from './module/useNavigation.js';
+import DomEvent from './module/DomEvents.js';
+import refresh from './module/apiActions.js';
+import { selectElsFromDom } from './module/DomUtilities.js';
 
 DomEvent(document, 'DOMContentLoaded', async () => {
   const movieLoaded = await refresh(1);
