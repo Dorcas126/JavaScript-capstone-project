@@ -16,6 +16,7 @@
 
 body {
   background-color: var(--primary-dark);
+  overflow-x: hidden;
 }
 
 header {
@@ -63,19 +64,7 @@ nav {
   flex-direction: row;
   height: 100%;
   position: relative;
-}
-
-nav ul {
-  list-style-type: none;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 20px;
-  right: 0;
-  position: absolute;
-  margin-right: 15px;
-  height: 100%;
+  justify-content: space-between;
 }
 
 nav ul li {
@@ -88,6 +77,49 @@ nav ul li {
 
 .nav ul li.active {
   background-color: var(--primary-red);
+}
+
+.ham {
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 200ms;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  margin-right: 2rem;
+}
+
+.hamRotate.active {
+  transform: rotate(45deg);
+}
+
+.hamRotate180.active {
+  transform: rotate(180deg);
+}
+
+.line {
+  fill: none;
+  transition: stroke-dasharray 200ms, stroke-dashoffset 200ms;
+  stroke: white;
+  stroke-width: 5.5;
+  stroke-linecap: round;
+}
+
+.ham1 .top {
+  stroke-dasharray: 40 139;
+}
+
+.ham1 .bottom {
+  stroke-dasharray: 40 180;
+}
+
+.ham1.active .top {
+  stroke-dashoffset: -98px;
+}
+
+.ham1.active .bottom {
+  stroke-dashoffset: -138px;
 }
 
 .loader {
@@ -657,9 +689,48 @@ form h3 {
   font-weight: 700;
 }
 
+@media screen and (max-width: 769px) {
+  nav ul {
+    list-style-type: none;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 10cm;
+    margin-top: 2cm;
+    width: 100%;
+    background-color: var(--primary-dark);
+    position: absolute;
+    gap: 20px;
+    transition: 200ms;
+  }
+
+  nav ul.active {
+    display: flex;
+  }
+}
+
 @media screen and (min-width: 769px) {
   .commentsBox {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  nav ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 20px;
+    right: 0;
+    position: relative;
+    margin-right: 15px;
+    height: 100%;
+    margin-top: 0;
+  }
+
+  .ham {
+    display: none;
   }
 }
 
