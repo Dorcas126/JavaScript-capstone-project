@@ -5,13 +5,13 @@ const transformMovieData = (data) => {
   const transformedData = {
     id: data.id,
     name: data.name,
-    summary: data.summary,
-    type: data.type,
-    language: data.language,
-    rating: data.rating,
+    summary: data.summary ? data.summary : 'No description',
+    type: data.type ? data.type : 'No available',
+    language: data.language ? data.language : 'No available',
+    rating: data.rating?.average ? data.rating : { average: 'N/A' },
     officialSite: data.officialSite,
     image: data.image,
-    description: data.summary,
+    genres: data.genres ? data.genres : [],
   };
 
   return transformedData;

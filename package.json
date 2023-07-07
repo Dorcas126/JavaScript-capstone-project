@@ -34,6 +34,7 @@
     "html-loader": "^4.2.0",
     "html-webpack-plugin": "^5.5.3",
     "lodash": "^4.17.21",
+    "timeago.js": "^4.0.2",
     "url-loader": "^4.1.1",
     "webpack-merge": "^5.9.0"
   }

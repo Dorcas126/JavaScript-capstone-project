@@ -1,10 +1,11 @@
+import { format } from 'timeago.js';
 import { createElement, selectElFromDom } from './DomUtilities.js';
 import { getcomments, addComment } from './apis.js';
 import commentCounter from './commentCounter.js';
 import { setFormInfo } from './utilities.js';
 
 export const displayComments = async (id, pageLoads) => {
-  const commentsWrapper = selectElFromDom('.commentsBox');
+  const commentsWrapper = selectElFromDom('.comment-list');
   if (pageLoads) {
     commentsWrapper.innerHTML = '<p>LOADING COMMENTS...</p>';
   }
@@ -13,13 +14,25 @@ export const displayComments = async (id, pageLoads) => {
   if (!comments.error) {
     commentsWrapper.innerHTML = null;
     comments.forEach((comment) => {
-      const p = createElement('p');
-      p.innerHTML = `
-              <span>${comment.creation_date}</span>
-                 <span>${comment.username}: </span>
-                 <span>${comment.comment}</span>
-              `;
-      commentsWrapper.appendChild(p);
+      const div = createElement('div');
+      div.classList.add('comment-user');
+      div.innerHTML = `
+      <div class="user-details">
+      <div class="img">
+          <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+              alt="dp">
+      </div>
+
+      <p class="user-name">${comment.username}</p>
+  </div>
+  <p class="user-comment">${comment.comment} </p>
+  <p class="date">
+      Posted <time datetime="${comment.creation_date}">
+      ${format(`${comment.creation_date}`)} ago</time>.
+  </p>
+      `;
+      commentsWrapper.appendChild(div);
+      commentsWrapper.scrollTop = commentsWrapper.scrollHeight;
     });
   } else {
     commentsWrapper.innerHTML = '<p>No comments under this movie</p>';

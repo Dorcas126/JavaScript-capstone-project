@@ -5,6 +5,7 @@
   box-sizing: border-box;
   font-family: "Heebo", sans-serif;
   text-decoration: none;
+  transition: 0.3s ease-in;
 }
 
 :root {
@@ -49,6 +50,7 @@ header {
   align-items: center;
   height: 100%;
   color: white;
+  border: 0;
 }
 
 .logo-movie a span {
@@ -123,10 +125,11 @@ nav ul li {
   position: absolute;
   top: 50%;
   animation: spinner-h1vps1md 1.04s infinite reverse steps(1);
-  transform: translate(
-    calc(2 * var(--translate-2)),
-    calc(var(--translate) * 1%)
-  );
+  transform:
+    translate(
+      calc(2 * var(--translate-2)),
+      calc(var(--translate) * 1%)
+    );
   z-index: 1;
 }
 
@@ -142,6 +145,7 @@ nav ul li {
 .spinner > div:nth-of-type(2) {
   --translate: 50;
   --translate-2: calc(-56px / 8);
+
   animation-delay: 0.52s;
   animation-direction: reverse;
   transform: translate(21.3px, 0);
@@ -165,12 +169,14 @@ nav ul li {
 
 @keyframes spinner-g7vlvwmd {
   from {
-    transform: translate(calc(var(--translate) * 1%), 0)
+    transform:
+      translate(calc(var(--translate) * 1%), 0)
       translate(calc(var(--translate-2)), 0) rotate(0deg);
   }
 
   to {
-    transform: translate(calc(var(--translate) * 1%), 0)
+    transform:
+      translate(calc(var(--translate) * 1%), 0)
       translate(calc(var(--translate-2)), 0) rotate(360deg);
   }
 }
@@ -218,19 +224,20 @@ footer {
 
 .card-content {
   z-index: 1;
-  background-image: linear-gradient(
-    rgba(0, 0, 0, 0.3),
-    rgba(0, 0, 0, 0.3),
-    rgba(0, 0, 0, 0.74),
-    rgba(0, 0, 0, 0.897)
-  );
+  background-image:
+    linear-gradient(
+      rgba(0, 0, 0, 0.3),
+      rgba(0, 0, 0, 0.3),
+      rgba(0, 0, 0, 0.74),
+      rgba(0, 0, 0, 0.897)
+    );
   height: 100%;
   width: 100%;
   display: flex;
   justify-content: end;
   flex-direction: column;
   gap: 10px;
-  padding: 0px 10px 10px 10px;
+  padding: 0 10px 10px 10px;
 }
 
 .title {
@@ -293,13 +300,13 @@ footer {
   margin-top: 2cm;
   top: 0;
   left: 0;
-  backdrop-filter: blur(10px);
-  display: grid;
-  justify-content: center;
   position: fixed;
   overflow-y: scroll;
   z-index: 10;
   background-color: var(--primary-dark);
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10rem;
 }
 
 .modalContentWrapper {
@@ -309,7 +316,6 @@ footer {
 }
 
 .modal-close-btn {
-  padding: 3px;
   outline: none;
   border: 0;
   font-size: 16px;
@@ -319,6 +325,7 @@ footer {
   background-color: var(--primary-red);
   border-radius: 6px;
   cursor: pointer;
+  margin-top: 1cm;
 }
 
 .image-box {
@@ -338,12 +345,13 @@ footer {
 .img-overlay {
   height: 100%;
   width: 100%;
-  background-image: linear-gradient(
-    rgba(13, 13, 15, 0.205),
-    rgba(13, 13, 15, 0.253),
-    rgba(13, 13, 15, 0.911),
-    rgb(13, 13, 15)
-  );
+  background-image:
+    linear-gradient(
+      rgba(13, 13, 15, 0.205),
+      rgba(13, 13, 15, 0.253),
+      rgba(13, 13, 15, 0.911),
+      rgb(13, 13, 15)
+    );
   position: absolute;
   top: 0;
   left: 0;
@@ -435,7 +443,7 @@ footer {
 
 .info-card i {
   font-size: 22px;
-  columns: span 1;
+  grid-column: span 1;
   display: flex;
   padding-left: 10px;
   align-items: center;
@@ -453,7 +461,7 @@ footer {
   color: green;
 }
 
-#type {
+#types {
   color: rgb(124, 0, 128);
 }
 
@@ -511,12 +519,12 @@ footer {
 }
 
 .comment-list {
- height: 419px;
- overflow-y: auto;
- display: flex;
- flex-direction: column;
- padding: 2px;
- gap: 20px; 
+  height: 419px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 2px;
+  gap: 20px;
 }
 
 .comment-user {
@@ -526,29 +534,29 @@ footer {
 }
 
 .user-details {
-  height: .8cm;
+  height: 0.8cm;
   display: flex;
   gap: 10px;
 }
 
-.user-details .img{
+.user-details .img {
   display: flex;
   justify-content: end;
 }
 
-.user-details .img img{
+.user-details .img img {
   height: 0.8cm;
   width: 0.8cm;
   border-radius: 30%;
 }
 
-.user-name{
+.user-name {
   font-size: 18px;
   font-weight: 700;
   color: var(--primary-red);
 }
 
-.user-comment{
+.user-comment {
   color: var(--secondary-dark);
   margin-top: 10px;
   font-weight: 300;
@@ -562,12 +570,12 @@ footer {
   margin-right: 15px;
 }
 
-.comment-list::-webkit-scrollbar{
+.comment-list::-webkit-scrollbar {
   width: 2px;
   background-color: white;
 }
 
-.comment-list::-webkit-scrollbar-thumb{
+.comment-list::-webkit-scrollbar-thumb {
   background-color: var(--primary-red);
 }
 
@@ -650,9 +658,14 @@ form h3 {
 }
 
 @media screen and (min-width: 769px) {
-
   .commentsBox {
     grid-template-columns: repeat(2, 1fr);
   }
+}
 
+@media screen and (min-width: 1119px) {
+  .modalBox {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
 }

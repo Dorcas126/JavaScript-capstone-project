@@ -13,7 +13,7 @@ const displayMovies = async (movies) => {
     const movieCardContent = `
     <img src="${movie.image?.medium}" alt="${movie.name}" class='movie-img' />
     <div class="card-content">
-      <h3 class="title">Kirby Buckets</h3>
+      <h3 class="title">${movie.name}</h3>
 
       <div class="comments">
         <button class="comment-btn">
@@ -42,7 +42,7 @@ const displayMovies = async (movies) => {
   });
   likeBtns.forEach((likeBtn) => {
     DomEvent(likeBtn, 'click', (e) => {
-      likeCount(e,likeBtn.id);
+      likeCount(e, likeBtn.id);
     });
   });
 };

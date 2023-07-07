@@ -1,8 +1,8 @@
 import { selectElFromDom } from './DomUtilities.js';
 import { addLike } from './apis.js';
 
-const likeCount = async (e,id) => {
-  e.preventDefault()
+const likeCount = async (e, id) => {
+  e.preventDefault();
   const likeSpanCounter = selectElFromDom(`.like-counter${id}`);
   const loveBtn = selectElFromDom(`#love${id}`);
   if (loveBtn.classList.contains('fa-solid')) {
