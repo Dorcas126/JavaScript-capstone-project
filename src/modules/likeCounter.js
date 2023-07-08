@@ -20,7 +20,7 @@ const likeCount = async (id) => {
     likeSpanCounter.innerHTML = parseInt(likeSpanCounter.textContent, 10) + 1;
   }
 
-  return 0
+  return 0;
 };
 
 export default likeCount;
