@@ -99,6 +99,6 @@ describe('likeCount', () => {
     expect(selectElFromDom).toHaveBeenCalledWith('#love123');
     expect(mockLoveBtn.classList.contains).toHaveBeenCalledWith('like-before');
     expect(mockLikeSpanCounter.innerHTML).toBe('3');
-});
+  });
 
 });
