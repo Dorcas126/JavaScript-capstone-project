@@ -50,7 +50,8 @@ const displayMovies = async (movies, pageNumber) => {
   });
   likeBtns.forEach((likeBtn) => {
     DomEvent(likeBtn, 'click', (e) => {
-      likeCount(e, likeBtn.id);
+      e.preventDefault()
+      likeCount(likeBtn.id);
     });
   });
 
