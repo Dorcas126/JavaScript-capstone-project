@@ -4,8 +4,7 @@ import displayMovies from './displayMovieCards.js';
 import { movieContainer } from './variables.js';
 // List item on page
 
-const refresh = async (pageNumber) => {
-  movieContainer.innerHTML = null;
+const refresh = async () => {
   const loader = createElement('div');
   loader.classList.add('loader');
   loader.innerHTML = `
@@ -15,13 +14,10 @@ const refresh = async (pageNumber) => {
         </div>
   `;
   movieContainer.appendChild(loader);
-  const movies = await getMovieApi(pageNumber);
+  const movies = await getMovieApi();
   if (movies) {
-    displayMovies(movies, pageNumber);
-    return { loaded: true };
+    displayMovies(movies);
   }
-
-  return 0;
 };
 
 export default refresh;

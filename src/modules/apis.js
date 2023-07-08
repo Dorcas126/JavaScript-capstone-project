@@ -1,5 +1,6 @@
 import { MOVIE_API_URL, BASE_URL, movieContainer } from './variables.js';
 
+/* eslint no-underscore-dangle: ["error", {"allow": ["_embedded"]}] */
 const transformMovieData = (data) => {
   const transformedData = {
     id: data.id,
@@ -17,8 +18,8 @@ const transformMovieData = (data) => {
 };
 
 // get movies and likes
-export const getMovieApi = async (pageNumber) => {
-  const URLS = [fetch(`${MOVIE_API_URL}page=${pageNumber}`), fetch(`${BASE_URL}/likes`)];
+export const getMovieApi = async () => {
+  const URLS = [fetch(MOVIE_API_URL), fetch(`${BASE_URL}/likes`)];
   const movies = await Promise.all(URLS)
     .then((res) => {
       const response = res.map((data) => data.json());
@@ -34,7 +35,7 @@ export const getMovieApi = async (pageNumber) => {
       return movie;
     });
 
-  return movies.slice(15, 30);
+  return movies;
 };
 
 // Get comments for a specific movie

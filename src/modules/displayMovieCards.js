@@ -4,11 +4,9 @@ import { createElement, selectElsFromDom } from './DomUtilities.js';
 import DomEvent from './DomEvents.js';
 import printModalBox from './modalBox.js';
 import likeCount from './likeCounter.js';
-import usePagenation from './usePagination.js';
 
-const displayMovies = async (movies, pageNumber) => {
+const displayMovies = async (movies) => {
   movieContainer.innerHTML = null;
-  movieContainer.scrollIntoView({ block: 'end', behavior: 'smooth' });
   movies.forEach((movie) => {
     const movieCard = createElement('li');
     movieCard.classList.add('movie-card');
@@ -34,13 +32,7 @@ const displayMovies = async (movies, pageNumber) => {
     movieCard.innerHTML = movieCardContent;
     movieContainer.appendChild(movieCard);
   });
-  const pagination = createElement('div');
-  pagination.classList.add('pagination');
-  pagination.innerHTML = `
-  <div class="pagnate-box">
-</div>
-  `;
-  movieContainer.appendChild(pagination);
+
   const openModalBtns = selectElsFromDom('.comment-btn');
   const likeBtns = selectElsFromDom('.like-btn');
   openModalBtns.forEach((btn, index) => {
@@ -54,8 +46,6 @@ const displayMovies = async (movies, pageNumber) => {
       likeCount(likeBtn.id);
     });
   });
-
-  usePagenation(movies.length, pageNumber);
 };
 
 export default displayMovies;
