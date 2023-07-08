@@ -100,5 +100,4 @@ describe('likeCount', () => {
     expect(mockLoveBtn.classList.contains).toHaveBeenCalledWith('like-before');
     expect(mockLikeSpanCounter.innerHTML).toBe('3');
   });
-
 });
