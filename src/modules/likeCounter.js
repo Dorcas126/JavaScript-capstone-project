@@ -4,6 +4,7 @@ import { addLike } from './apis.js';
 const likeCount = async (id) => {
   const likeSpanCounter = selectElFromDom(`.like-counter${id}`);
   const loveBtn = selectElFromDom(`#love${id}`);
+
   if (loveBtn.classList.contains('fa-solid')) {
     loveBtn.classList.replace('fa-solid', 'fa-regular');
     likeSpanCounter.innerHTML = parseInt(likeSpanCounter.textContent, 10) - 1;
@@ -18,6 +19,8 @@ const likeCount = async (id) => {
     loveBtn.classList.replace('fa-regular', 'fa-solid');
     likeSpanCounter.innerHTML = parseInt(likeSpanCounter.textContent, 10) + 1;
   }
+
+  return 0;
 };
 
 export default likeCount;

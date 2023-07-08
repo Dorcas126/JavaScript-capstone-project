@@ -52,9 +52,11 @@
   </ul>
 </details>
 <details>
-  <summary>Visual Studio Code</summary>
+  <summary>Tools</summary>
   <ul>
     <li><a href="https://code.visualstudio.com">Visual Studio Code</a></li>
+     <li><a href="https://code.visualstudio.com">Webpack</a></li>
+      <li><a href="https://code.visualstudio.com">Jest</a></li>
   </ul>
 </details>
 <details>
@@ -88,7 +90,7 @@
 
 ## 🚀 Presentation <a name="zoom-video"></a>
 
-- [Presentation]()
+- [Presentation](https://drive.google.com/file/d/1PLo8RAX17yn_8-v53XmjEHFS891ObsKj/view?usp=sharing)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

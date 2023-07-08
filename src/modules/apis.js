@@ -1,6 +1,5 @@
 import { MOVIE_API_URL, BASE_URL, movieContainer } from './variables.js';
 
-/* eslint no-underscore-dangle: ["error", {"allow": ["_embedded"]}] */
 const transformMovieData = (data) => {
   const transformedData = {
     id: data.id,
