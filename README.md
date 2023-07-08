@@ -82,7 +82,7 @@
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo]()
+- [Live Demo](https://dorcas126.github.io/JavaScript-capstone-project/dist/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
