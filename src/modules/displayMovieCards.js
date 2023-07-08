@@ -42,7 +42,7 @@ const displayMovies = async (movies) => {
   });
   likeBtns.forEach((likeBtn) => {
     DomEvent(likeBtn, 'click', (e) => {
-      e.preventDefault()
+      e.preventDefault();
       likeCount(likeBtn.id);
     });
   });
